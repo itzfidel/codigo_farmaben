@@ -58,4 +58,15 @@ if($_POST['funcion']=='editar_usuario'){
     $usuario->editar($id_usuario,$telefono,$movil,$residencia,$correo,$sexo,$adicional);
     echo 'editado';
 }
+if($_POST['funcion']=='cambiar_contra'){  
+    $id_usuario=$_POST['id_usuario'];
+    $oldpass=$_POST['oldpass'];
+    $newpass=$_POST['newpass'];
+    $usuario->cambiar_contra($id_usuario,$oldpass,$newpass);
+}
+if($_POST['funcion']=='cambiar_foto'){  
+    $nombre=$_FILES['photo']['name'];
+    echo $nombre;
+}
 ?>
+
