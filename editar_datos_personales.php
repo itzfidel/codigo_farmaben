@@ -23,7 +23,7 @@ include_once 'layouts/nav.php';
       </div>
       <div class="modal-body">
         <div class="text-center">
-           <img id="avatar3"src="../img/Administrador.jpg" class="profile-user-img img-fluid img-circle">
+           <img id="avatar3"src="../img/avatar.png" class="profile-user-img img-fluid img-circle">
         </div>
       <div class="text-center">
             <b>
@@ -31,12 +31,6 @@ include_once 'layouts/nav.php';
                     echo $_SESSION['nombre_us'];
                 ?>
             </b>
-      </div>
-      <form id="form-pass">
-          <div class="input-group">
-             <span class="input-group-text"></span>
-          </div>
-      </form>
       </div>
       <div class="alert alert-success text-center" id="update" style='display:none;'>
           <span><i class="fas fa-check m-1"></i>Se cambio password correctamente</span>
@@ -79,7 +73,7 @@ include_once 'layouts/nav.php';
       </div>
       <div class="modal-body">
         <div class="text-center">
-           <img id="avatar1"src="../img/Administrador.jpg" class="profile-user-img img-fluid img-circle">
+           <img id="avatar1"src="../img/avatar.png" class="profile-user-img img-fluid img-circle">
         </div>
         <div class="text-center">
             <b>
@@ -134,7 +128,10 @@ include_once 'layouts/nav.php';
                       <div class="card card-success card-outline">
                          <div class="card-body box-profile">
                             <div class="text-center">
-                              <img src="../img/Administrador.jpg" class="profile-user-img img-fluid img-circle">
+                              <img src="../img/avatar.png" class="profile-user-img img-fluid img-circle">
+                            </div>
+                            <div class="text-center mt-1">
+                               <button type='button' data-toggle="modal" data-target="#cambiophoto"class="btn btn-primary btn-sm">Cambiar avatar</button>
                             </div>
                             <input id="id_usuario"type="hidden" value="<?php echo $_SESSION['usuario']?>">
                             <h3 id="nombre_us"class="profile-username text-center text-sucess">Nombre</h3>
