@@ -58,7 +58,6 @@ $(document).ready(function(){
     });
     $('#form-usuario').submit(e=>{
         if(edit==true){
-            console.log('hola');
             let telefono=$('#telefono').val();
             let movil=$('#movil').val();
             let residencia=$('#residencia').val();
@@ -78,13 +77,48 @@ $(document).ready(function(){
             })
         }
         else{
-            console.log('hola2');
             $('#noeditado').hide('slow');
             $('#noeditado').show(1000);
             $('#noeditado').hide(2000);
             $('#form-usuario').trigger('reset');
         }
-        e.preventDefault();  
+        e.preventDefault(); 
+    });
+
+    $('#form-pass').submit(e=>{
+        let oldpass=$('#oldpass').val();
+        let newpass=$('#newpass').val();
+        funcion='cambiar_contra';
+        $.post('../controlador/UsuarioController.php',{id_usuario,funcion,oldpass,newpass},(response)=>{
+            if(response=='update'){
+                $('#update').hide('slow');
+                $('#update').show(1000);
+                $('#update').hide(2000);
+                $('#form-pass').trigger('reset');
+            }
+            else{
+                $('#noupdate').hide(1000);
+                $('#noupdate').show(1000);
+                $('#noupdate').hide(1000);
+                $('#form-pass').trigger('reset');
+            }
+        })
+        e.preventDefault(); 
+    
+    })
+    $('#form-photo').submit(e=>{
+        let FormData = new FormData($('#form-photo')[0]);
+        $.ajax({
+            url:'../controlador/UsuarioController.php',
+            type:'POST',
+            data:formData,
+            cache:false,
+            processData: false,
+            contentType:false
+        }).done(function(response){
+            console.Log(response);    
+        });
+        e.preventDefault();
     })
     
 })
