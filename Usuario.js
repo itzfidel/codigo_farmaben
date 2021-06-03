@@ -1,4 +1,5 @@
-$(document).ready(function(){  
+
+    $(document).ready(function(){  
     var funcion='';
     var id_usuario = $('#id_usuario').val();
     var edit=false;
@@ -46,7 +47,6 @@ $(document).ready(function(){
         funcion='capturar_datos';
         edit=true;
         $.post('../controlador/UsuarioController.php',{funcion,id_usuario},(response)=>{
-            console.log('response100');
             const usuario = JSON.parse(response);
             $('#telefono').val(usuario.telefono);
             $('#movil').val(usuario.movil);
@@ -97,28 +97,14 @@ $(document).ready(function(){
                 $('#form-pass').trigger('reset');
             }
             else{
-                $('#noupdate').hide(1000);
+                $('#noupdate').hide('slow');
                 $('#noupdate').show(1000);
-                $('#noupdate').hide(1000);
+                $('#noupdate').hide(2000);
                 $('#form-pass').trigger('reset');
             }
-        })
+        });
         e.preventDefault(); 
     
     })
-    $('#form-photo').submit(e=>{
-        let FormData = new FormData($('#form-photo')[0]);
-        $.ajax({
-            url:'../controlador/UsuarioController.php',
-            type:'POST',
-            data:formData,
-            cache:false,
-            processData: false,
-            contentType:false
-        }).done(function(response){
-            console.Log(response);    
-        });
-        e.preventDefault();
-    })
-    
+
 })
