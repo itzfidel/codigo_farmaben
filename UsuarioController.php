@@ -64,9 +64,5 @@ if($_POST['funcion']=='cambiar_contra'){
     $newpass=$_POST['newpass'];
     $usuario->cambiar_contra($id_usuario,$oldpass,$newpass);
 }
-if($_POST['funcion']=='cambiar_foto'){  
-    $nombre=$_FILES['photo']['name'];
-    echo $nombre;
-}
 ?>
 
