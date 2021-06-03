@@ -10,30 +10,29 @@ if($_SESSION['us_tipo']==1){
 include_once 'layouts/nav.php';
 ?>
     <!-- Button trigger modal -->
-
 <!-- Modal -->
 <div class="modal fade" id="cambiocontra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">   
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cambiar contraseña</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Cambiar password</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</spam>
         </button>
       </div>
       <div class="modal-body">
         <div class="text-center">
-           <img id="avatar3"src="../img/avatar.png" class="profile-user-img img-fluid img-circle">
+           <img src="../img/avatar.png" class="profile-user-img img-fluid img-circle">
         </div>
       <div class="text-center">
-            <b>
-                <?php
-                    echo $_SESSION['nombre_us'];
-                ?>
-            </b>
+          <b>
+              <?php
+                  echo $_SESSION['nombre_us'];
+               ?>
+          </b>
       </div>
       <div class="alert alert-success text-center" id="update" style='display:none;'>
-          <span><i class="fas fa-check m-1"></i>Se cambio password correctamente</span>
+          <span><i class="fas fa-check m-1"></i>Se cambio el password correctamente</span>
       </div>
       <div class="alert alert-danger text-center" id="noupdate" style='display:none;'>
           <span><i class="fas fa-times m-1"></i>El password no es correcto</span>
@@ -41,18 +40,17 @@ include_once 'layouts/nav.php';
       <form id="form-pass">
           <dib class="input-group mb-3">
              <div class="input-group-prepend">
-             <span class="input-group-text"><i class="fas fa-unlock-alt"></i></span>
-          </div>
-          <input id="oldpass"type="password" class="form-control" placeholder="Ingrese password actual">
+                <span class="input-group-text"><i class="fas fa-unlock-alt"></i></span>
+             </div>
+             <input id="oldpass"type="password" class="form-control" placeholder="Ingrese password actual">
           </dib>
           <dib class="input-group mb-3">
              <div class="input-group-prepend">
-             <span class="input-group-text"><i class="fas fa-lock"></i></span>
-          </div>
-          <input id="newpass"type="text" class="form-control" placeholder="Ingrese password nueva">
+                  <span class="input-group-text"><i class="fas fa-lock"></i></span>
+             </div>
+             <input id="newpass"type="text" class="form-control" placeholder="Ingrese password nueva">
           </dib>
-          
-      
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
@@ -131,10 +129,10 @@ include_once 'layouts/nav.php';
                               <img src="../img/avatar.png" class="profile-user-img img-fluid img-circle">
                             </div>
                             <div class="text-center mt-1">
-                               <button type='button' data-toggle="modal" data-target="#cambiophoto"class="btn btn-primary btn-sm">Cambiar avatar</button>
-                            </div>
+                               <button class="btn btn-primary btn-sm">Cambiar avatar</button>
+                            </div>                                                       
                             <input id="id_usuario"type="hidden" value="<?php echo $_SESSION['usuario']?>">
-                            <h3 id="nombre_us"class="profile-username text-center text-sucess">Nombre</h3>
+                            <h3 id="nombre_us"class="profile-username text-center text-success">Nombre</h3>
                             <p id="apellidos_us"class="text-muted text-center">Apellidos</p>
                             <ul class="list-group list-group-unbordered mb-3">
                               <li class="list-group-item">
