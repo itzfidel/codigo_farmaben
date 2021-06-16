@@ -1,7 +1,7 @@
 <?php
 session_start();
-if($_SESSION['us_tipo']==1){
-    include_once 'layouts/header.php';
+if($_SESSION['us_tipo']==1||$_SESSION['us_tipo']==3){
+include_once 'layouts/header.php';
 ?>
 
   <title>Adm | Editar Datos</title>
@@ -13,7 +13,7 @@ include_once 'layouts/nav.php';
 <!-- Modal -->
 <div class="modal fade" id="cambiocontra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">   
+    <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Cambiar password</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -22,7 +22,7 @@ include_once 'layouts/nav.php';
       </div>
       <div class="modal-body">
         <div class="text-center">
-           <img src="../img/avatar.png" class="profile-user-img img-fluid img-circle">
+           <img id="avatar3"src="../img/avatar.png" class="profile-user-img img-fluid img-circle">
         </div>
       <div class="text-center">
           <b>
@@ -35,7 +35,7 @@ include_once 'layouts/nav.php';
           <span><i class="fas fa-check m-1"></i>Se cambio el password correctamente</span>
       </div>
       <div class="alert alert-danger text-center" id="noupdate" style='display:none;'>
-          <span><i class="fas fa-times m-1"></i>El password no es correcto</span>
+          <span><i class="fas fa-times m-1"></i>no se cambio el password</span>
       </div>
       <form id="form-pass">
           <dib class="input-group mb-3">
@@ -50,19 +50,19 @@ include_once 'layouts/nav.php';
              </div>
              <input id="newpass"type="text" class="form-control" placeholder="Ingrese password nueva">
           </dib>
-        
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
         <button type="submit" class="btn bg-gradient-primary">Guardar</button>
-        </form>
+      </form>
       </div>
     </div>
   </div>
 </div>
 <div class="modal fade" id="cambiophoto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">   
+    <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Cambiar avatar</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -126,18 +126,18 @@ include_once 'layouts/nav.php';
                       <div class="card card-success card-outline">
                          <div class="card-body box-profile">
                             <div class="text-center">
-                              <img src="../img/avatar.png" class="profile-user-img img-fluid img-circle">
+                              <img id='avatar2'src="../img/avatar.png" class="profile-user-img img-fluid img-circle">
                             </div>
                             <div class="text-center mt-1">
-                               <button class="btn btn-primary btn-sm">Cambiar avatar</button>
-                            </div>                                                       
+                               <button type='button' data-toggle="modal" data-target="#cambiophoto"class="btn btn-primary btn-sm">Cambiar avatar</button>
+                            </div>
                             <input id="id_usuario"type="hidden" value="<?php echo $_SESSION['usuario']?>">
                             <h3 id="nombre_us"class="profile-username text-center text-success">Nombre</h3>
                             <p id="apellidos_us"class="text-muted text-center">Apellidos</p>
                             <ul class="list-group list-group-unbordered mb-3">
                               <li class="list-group-item">
                                   <b style="color: #C533FF">Edad</b><a id="edad"class="float-right">12</a>
-                              </li>                              
+                              </li>
                               <li class="list-group-item">
                                   <b style="color: #C533FF">DNI</b><a id="dni_us"class="float-right">12</a>
                               </li>
@@ -146,8 +146,8 @@ include_once 'layouts/nav.php';
                                   <span id="us_tipo"class="float-right badge badge-primary">Administrador</span>
                               </li>
                               <button data-toggle="modal" data-target="#cambiocontra" type="button" class="btn btn-block btn-outline-warning btn-sm">Cambiar password</button>
-                            </ul> 
-                         </div>                                    
+                            </ul>
+                         </div>
                       </div>
                       <div class="card card-sucess">
                        <div class="card-header">
@@ -162,7 +162,7 @@ include_once 'layouts/nav.php';
                           <i class="fas fa-phone mr-1"></i>Movil
                           </strong>
                           <p id='movil_us'class="text-muted">5234524352</p>
-                          <strong style="color: #C533FF">  
+                          <strong style="color: #C533FF">
                           <i class="fas fa-map-marker-alt mr-1"></i>Residencia
                           </strong>
                           <p id='residencia_us'class="text-muted">5234524352</p>
@@ -178,12 +178,12 @@ include_once 'layouts/nav.php';
                           <i class="fas fa-pencil-alt mr-1"></i>Informacion adicional
                           </strong>
                           <p id="adicional_us"class="text-muted">5234524352</p>
-                          <button class="edit btn btn-block bg-gradient-danger">Editar</button>                         
+                          <button class="edit btn btn-block bg-gradient-danger">Editar</button>
                        </div>
                        <div class="card-footer">
-                        <p class="text-muted">click en boton si desea editar</p>      
+                        <p class="text-muted">click en boton si desea editar</p>
                        </div>
-                      </div>                      
+                      </div>
                     </div>
                     <div class="col-md-9">
                      <div class="card card-success">
@@ -209,13 +209,13 @@ include_once 'layouts/nav.php';
                                   <div class="col-sm-10">
                                   <input type="number" id="movil" class="form-control">
                                   </div>
-                                </div>                               
+                                </div>
                                 <div class="form-group row">
                                   <label for="residencia" class="col-sm-2 col-form-label">Residencia</label>
                                   <div class="col-sm-10">
                                   <input type="text" id="residencia" class="form-control">
                                   </div>
-                                </div>                                
+                                </div>
                                 <div class="form-group row">
                                   <label for="correo" class="col-sm-2 col-form-label">Correo</label>
                                   <div class="col-sm-10">
@@ -227,7 +227,7 @@ include_once 'layouts/nav.php';
                                   <div class="col-sm-10">
                                   <input type="text" id="sexo" class="form-control">
                                   </div>
-                                </div>          
+                                </div>
                                 <div class="form-group row">
                                   <label for="adicional" class="col-sm-2 col-form-label">Informacion adicional</label>
                                   <div class="col-sm-10">
@@ -243,11 +243,11 @@ include_once 'layouts/nav.php';
                        </div>
                        <div class="card-footer">
                            <p class="text-muted">Cuidado con ingresar datos erroneos</p>
-                       </div>                      
+                       </div>
                      </div>
-                    </div>                    
+                    </div>
                 </div>
-            </div>            
+            </div>
         </div>
     </section>
   </div>

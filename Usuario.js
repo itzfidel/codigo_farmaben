@@ -1,9 +1,8 @@
-
-    $(document).ready(function(){  
+$(document).ready(function(){
     var funcion='';
     var id_usuario = $('#id_usuario').val();
     var edit=false;
-    buscar_usuario(id_usuario);   
+    buscar_usuario(id_usuario);
     function buscar_usuario(dato) {
         funcion='buscar_usuario';
         $.post('../controlador/UsuarioController.php',{dato,funcion},(response)=>{
@@ -41,6 +40,11 @@
             $('#correo_us').html(correo);
             $('#sexo_us').html(sexo);
             $('#adicional_us').html(adicional);
+
+            $('#avatar2').attr('src',usuario.avatar);
+            $('#avatar1').attr('src',usuario.avatar);
+            $('#avatar3').attr('src',usuario.avatar);
+            $('#avatar4').attr('src',usuario.avatar);
         })
     }
     $(document).on('click','.edit',(e)=>{
@@ -72,7 +76,7 @@
                     $('#editado').hide(2000);
                     $('#form-usuario').trigger('reset');
                 }
-                edit=false;                
+                edit=false;
                 buscar_usuario(id_usuario);
             })
         }
@@ -82,7 +86,7 @@
             $('#noeditado').hide(2000);
             $('#form-usuario').trigger('reset');
         }
-        e.preventDefault(); 
+        e.preventDefault();
     });
 
     $('#form-pass').submit(e=>{
@@ -102,9 +106,37 @@
                 $('#noupdate').hide(2000);
                 $('#form-pass').trigger('reset');
             }
+        })
+        e.preventDefault();
+
+    })
+    $('#form-photo').submit(e=>{
+        let formData = new FormData($('#form-photo')[0]);
+        $.ajax({
+            url:'../controlador/UsuarioController.php',
+            type:'POST',
+            data:formData,
+            cache:false,
+            processData: false,
+            contentType:false
+        }).done(function(response){
+            const json = JSON.parse(response);
+            if(json.alert=='edit'){
+            $('#avatar1').attr('src',json.ruta);
+            $('#edit').hide('slow');
+            $('#edit').show(1000);
+            $('#edit').hide(2000);
+            $('#form-photo').trigger('reset');
+            buscar_usuario(id_usuario);
+        }
+        else{
+            $('#noedit').hide('slow');
+            $('#noedit').show(1000);
+            $('#noedit').hide(2000);
+            $('#form-photo').trigger('reset');
+        }
         });
-        e.preventDefault(); 
-    
+        e.preventDefault();
     })
 
 })

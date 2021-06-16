@@ -41,14 +41,14 @@ if($_POST['funcion']=='capturar_datos'){
             'residencia'=>$objeto->residencia_us,
             'correo'=>$objeto->correo_us,
             'sexo'=>$objeto->sexo_us,
-            'adicional'=>$objeto->adicional_us 
-                
+            'adicional'=>$objeto->adicional_us
+
         );
     }
     $jsonstring = json_encode($json[0]);
     echo $jsonstring;
 }
-if($_POST['funcion']=='editar_usuario'){  
+if($_POST['funcion']=='editar_usuario'){
     $id_usuario=$_POST['id_usuario'];
     $telefono=$_POST['telefono'];
     $movil=$_POST['movil'];
@@ -59,13 +59,13 @@ if($_POST['funcion']=='editar_usuario'){
     $usuario->editar($id_usuario,$telefono,$movil,$residencia,$correo,$sexo,$adicional);
     echo 'editado';
 }
-if($_POST['funcion']=='cambiar_contra'){  
+if($_POST['funcion']=='cambiar_contra'){
     $id_usuario=$_POST['id_usuario'];
     $oldpass=$_POST['oldpass'];
     $newpass=$_POST['newpass'];
     $usuario->cambiar_contra($id_usuario,$oldpass,$newpass);
 }
-if($_POST['funcion']=='cambiar_foto'){ 
+if($_POST['funcion']=='cambiar_foto'){
     if(($_FILES['photo']['type']=='image/jpeg')||($_FILES['photo']['type']=='image/png')||($_FILES['photo']['type']=='image/gif')){
         $nombre=uniqid().'-'.$_FILES['photo']['name'];
         $ruta='../img/'.$nombre;
@@ -81,7 +81,7 @@ if($_POST['funcion']=='cambiar_foto'){
         );
         $jsonstring = json_encode($json[0]);
         echo $jsonstring;
-    } 
+    }
     else{
         $json= array();
         $json[]=array(
@@ -131,4 +131,3 @@ if($_POST['funcion']=='crear_usuario'){
     $usuario->crear($nombre,$apellido,$edad,$dni,$pass,$tipo,$avatar);
 }
 ?>
-

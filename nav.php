@@ -21,7 +21,7 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
       </li>
-     
+
     </ul>
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -46,7 +46,7 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img id="avatar4"src="../img/Administrador.jpg" class="img-circle elevation-2" alt="User Image">
+          <img id="avatar4"src="../img/avatar.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">
@@ -68,6 +68,14 @@
               <i class="nav-icon fas fa-user-cog"></i>
               <p>
                 Datos personales
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="adm_usuario.php" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Gestion usuario
               </p>
             </a>
           </li>

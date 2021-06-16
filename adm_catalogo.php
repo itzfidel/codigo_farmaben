@@ -1,6 +1,6 @@
 <?php
 session_start();
-if($_SESSION['us_tipo']==1){
+if($_SESSION['us_tipo']==1||$_SESSION['us_tipo']==3){
     include_once 'layouts/header.php';
    ?>
   <title>AdminLTE 3 | Blank Page</title>
@@ -57,7 +57,7 @@ if($_SESSION['us_tipo']==1){
      </section>
      <!-- /.content -->
    </div>
-   <!-- /.content-wrapper -->  
+   <!-- /.content-wrapper -->
 <?php
 include_once 'layouts/footer.php';
 }
