@@ -10,6 +10,52 @@ include_once 'layouts/header.php';
 include_once 'layouts/nav.php';
 ?>
     <!-- Button trigger modal -->
+    
+<div class="modal fade" id="confirmar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">confirmar Accion</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</spam>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+           <img id="avatar3"src="../img/avatar.png" class="profile-user-img img-fluid img-circle">
+        </div>
+      <div class="text-center">
+          <b>
+              <?php
+                  echo $_SESSION['nombre_us'];
+               ?>
+          </b>
+      </div>
+      <span>Necesitamos su password para continuar</span>
+      <div class="alert alert-success text-center" id="confirmado" style='display:none;'>
+          <span><i class="fas fa-check m-1"></i>Se modifico al usuario</span>
+      </div>
+      <div class="alert alert-danger text-center" id="rechazado" style='display:none;'>
+          <span><i class="fas fa-times m-1"></i>no se cambio el *****</span>
+      </div>
+      <form id="form-confirmar">
+          <div class="input-group mb-3">
+             <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-unlock-alt"></i></span>
+             </div>
+             <input id="oldpass"type="password" class="form-control" placeholder="Ingrese password actual">
+             <input type="hidden" id="id_user">
+             <input type="hidden" id="funcion">      
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn bg-gradient-primary">Guardar</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="modal fade" id="crearusuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -22,6 +68,12 @@ include_once 'layouts/nav.php';
             </button>
           </div>
           <div class="card-body">
+          <div class="alert alert-success text-center" id="add" style='display:none;'>
+          <span><i class="fas fa-check m-1"></i>Se agrego correctamente</span>
+      </div>
+      <div class="alert alert-danger text-center" id="noadd" style='display:none;'>
+          <span><i class="fas fa-times m-1"></i>DNI ya existe en otro usuario</span>
+      </div>
             <form id="form-crear">
               <div class="form-group">
                 <label for="nombre">Nombres</label>
@@ -81,12 +133,13 @@ include_once 'layouts/nav.php';
                    <div class="input-group">
                        <input type="text" id="buscar"class="form-control float-left" placeholder="Ingrese nombre de usuario">
                        <div class="input-group-append">
-                       <button class="btn btn-default"><i class="fas fa-search"></i></button>
+                         <button class="btn btn-default"><i class="fas fa-search"></i></button>
                        </div>
                    </div>
                 </div>
                 <div class="card-body">
-                  <div id="usuarios" class="rowg-flex align-items-stretch"></div>
+                  <div id="usuarios" class="row d-flex align-items-stretch">
+                  </div>
                 </div>
                 <div class="card-footer">
 

@@ -94,6 +94,7 @@ $(document).ready(function(){
         let newpass=$('#newpass').val();
         funcion='cambiar_contra';
         $.post('../controlador/UsuarioController.php',{id_usuario,funcion,oldpass,newpass},(response)=>{
+            console.log(response);
             if(response=='update'){
                 $('#update').hide('slow');
                 $('#update').show(1000);
@@ -130,9 +131,9 @@ $(document).ready(function(){
             buscar_usuario(id_usuario);
         }
         else{
-            $('#noedit').hide('slow');
-            $('#noedit').show(1000);
-            $('#noedit').hide(2000);
+            $('#noeditar').hide('slow');
+            $('#noeditar').show(1000);
+            $('#noeditar').hide(2000);
             $('#form-photo').trigger('reset');
         }
         });
