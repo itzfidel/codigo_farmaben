@@ -14,9 +14,17 @@ $(document).ready(function(){
              template+=`
              <div usuarioId="${usuario.id}"class="col-12 col-sm-6 col-md-3 d-flex align-items-stretch">
             <div class="card bg-light">
-              <div class="card-header text-muted border-bottom-0">
-                ${usuario.tipo}
-              </div>
+              <div class="card-header text-muted border-bottom-0">`;
+            if(usuario.tipo_usuario==3){
+              template+=`<h1 class="badge badge-danger">${usuario.tipo}</h1>`;
+            }
+            if(usuario.tipo_usuario==1){
+              template+=`<h1 class="badge badge-warning">${usuario.tipo}</h1>`;
+            }
+            if(usuario.tipo_usuario==2){
+              template+=`<h1 class="badge badge-info">${usuario.tipo}</h1>`;
+            }
+            template+=`</div>
               <div class="card-body pt-0">
                 <div class="row">
                   <div class="col-7">
@@ -42,7 +50,7 @@ $(document).ready(function(){
               if(tipo_usuario==3){
                if(usuario.tipo_usuario!=3){
                  template+=`
-                 <button class="ascender btn btn-danger mr-1>
+                 <button class="borrar-usuario btn btn-danger mr-1"type="button" data-toggle="modal" data-target="#confirmar">
                      <i class="fas fa-window-close mr-1"></i>Eliminar
                  </button>
                 `;
@@ -56,7 +64,7 @@ $(document).ready(function(){
                }
                if(usuario.tipo_usuario==1){
                  template+=`
-                 <button class="descender btn btn-secondary ml-1" type="button" data-toggle="modal" data-target="#confirmar">
+                 <button class="descender btn btn-secondary ml-1"type="button" data-toggle="modal" data-target="#confirmar">
                      <i class="fas fa-sort-amount-down mr-1"></i>Descender
                  </button>
                  `;
@@ -65,7 +73,7 @@ $(document).ready(function(){
               else{
                   if(tipo_usuario==1 && usuario.tipo_usuario!=1 && usuario.tipo_usuario!=3){
                     template+=`
-                    <button class="btn btn-danger">
+                    <button class="borrar-usuario btn btn-danger"type="button" data-toggle="modal" data-target="#confirmar">
                         <i class="fas fa-window-close mr-1"></i>Eliminar
                     </button>
                    `;
@@ -104,7 +112,7 @@ $(document).ready(function(){
           $('#add').show(1000);
           $('#add').hide(2000);
           $('#form-crear').trigger('reset');
-          buscar_datos();        
+          buscar_datos();
       }
       else{
           $('#noadd').hide('slow');
@@ -129,17 +137,24 @@ $(document).ready(function(){
     $('#id_user').val(id);
     $('#funcion').val(funcion);
   });
+  $(document).on('click','.borrar-usuario',(e)=>{
+    const elemento= $(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
+    const id=$(elemento).attr('usuarioId');
+    funcion='borrar_usuario';
+    $('#id_user').val(id);
+    $('#funcion').val(funcion);
+  });
   $('#form-confirmar').submit(e=>{
     let pass=$('#oldpass').val();
     let id_usuario=$('#id_user').val();
     funcion=$('#funcion').val();
     $.post('../controlador/UsuarioController.php',{pass,id_usuario,funcion},(response)=>{
-        if(response=='ascendido'|| response=='descendido'){
+        if(response=='ascendido'|| response=='descendido'|| response=='borrado'){
         $('#confirmado').hide('slow');
         $('#confirmado').show(1000);
         $('#confirmado').hide(2000);
         $('#form-confirmado').trigger('reset');
-      }  
+      }
         else{
         $('#rechazado').hide('slow');
         $('#rechazado').show(1000);
@@ -150,5 +165,5 @@ $(document).ready(function(){
     });
     e.preventDefault();
 
-  });  
+  });
 })

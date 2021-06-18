@@ -22,6 +22,15 @@ $(document).ready(function(){
             apellidos+=`${usuario.apellidos}`;
             edad+=`${usuario.edad}`;
             dni+=`${usuario.dni}`;
+            if(usuario.tipo=='Root'){
+                tipo+=`<h1 class="badge badge-danger">${usuario.tipo}</h1>`;
+              }
+              if(usuario.tipo=='Administrador'){
+                tipo+=`<h1 class="badge badge-warning">${usuario.tipo}</h1>`;
+              }
+              if(usuario.tipo=='Tecnico'){
+                tipo+=`<h1 class="badge badge-info">${usuario.tipo}</h1>`;
+              }
             tipo+=`${usuario.tipo}`;
             telefono+=`${usuario.telefono}`;
             movil+=`${usuario.movil}`;
@@ -70,6 +79,8 @@ $(document).ready(function(){
             let adicional=$('#adicional').val();
             funcion='editar_usuario';
             $.post('../controlador/UsuarioController.php',{id_usuario,funcion,telefono,movil,residencia,correo,sexo,adicional},(response)=>{
+                response = response.trim();
+                console.log(response);
                 if(response=='editado'){
                     $('#editado').hide('slow');
                     $('#editado').show(1000);
@@ -94,7 +105,7 @@ $(document).ready(function(){
         let newpass=$('#newpass').val();
         funcion='cambiar_contra';
         $.post('../controlador/UsuarioController.php',{id_usuario,funcion,oldpass,newpass},(response)=>{
-            console.log(response);
+            response = response.trim();
             if(response=='update'){
                 $('#update').hide('slow');
                 $('#update').show(1000);

@@ -32,30 +32,30 @@ include_once 'layouts/nav.php';
           </b>
       </div>
       <div class="alert alert-success text-center" id="update" style='display:none;'>
-          <span><i class="fas fa-check m-1"></i>Se cambio el password correctamente</span>
+        <span><i class="fas fa-check m-1"></i>se cambio el password</span>
       </div>
       <div class="alert alert-danger text-center" id="noupdate" style='display:none;'>
-          <span><i class="fas fa-times m-1"></i>no se cambio el password</span>
+        <span><i class="fas fa-times m-1"></i>No se guardo password</span>
       </div>
       <form id="form-pass">
-          <dib class="input-group mb-3">
+          <div class="input-group mb-3">
              <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-unlock-alt"></i></span>
              </div>
              <input id="oldpass"type="password" class="form-control" placeholder="Ingrese password actual">
-          </dib>
-          <dib class="input-group mb-3">
+          </div>
+          <div class="input-group mb-3">
              <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fas fa-lock"></i></span>
              </div>
              <input id="newpass"type="text" class="form-control" placeholder="Ingrese password nueva">
-          </dib>
+          </div>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
         <button type="submit" class="btn bg-gradient-primary">Guardar</button>
-      </form>
+        </form>
       </div>
     </div>
   </div>
@@ -143,7 +143,7 @@ include_once 'layouts/nav.php';
                               </li>
                               <li class="list-group-item">
                                   <b style="color: #C533FF">Tipo Usuario</b>
-                                  <span id="us_tipo"class="float-right badge badge-primary">Administrador</span>
+                                  <span id="us_tipo"class="float-right">Administrador</span>
                               </li>
                               <button data-toggle="modal" data-target="#cambiocontra" type="button" class="btn btn-block btn-outline-warning btn-sm">Cambiar password</button>
                             </ul>
@@ -192,13 +192,13 @@ include_once 'layouts/nav.php';
                        </div>
                        <div class="card-body">
                            <div class="alert alert-success text-center" id="editado" style='display:none;'>
-                              <span><i class="fas fa-check m-1"></i>Guardado</span>
+                               <span><i class="fas fa-check m-1"></i>Editado</span>
                            </div>
                            <div class="alert alert-danger text-center" id="noeditado" style='display:none;'>
-                              <span><i class="fas fa-times m-1"></i>No Editado</span>
+                               <span><i class="fas fa-times m-1"></i>no Editado</span>
                            </div>
                            <form id='form-usuario'class="form-horizontal">
-                                <div class="form-group row">
+                                 <div class="form-group row">
                                   <label for="telefono" class="col-sm-2 col-form-label">Telefono</label>
                                   <div class="col-sm-10">
                                   <input type="number" id="telefono" class="form-control">

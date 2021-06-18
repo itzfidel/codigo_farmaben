@@ -10,7 +10,7 @@ include_once 'layouts/header.php';
 include_once 'layouts/nav.php';
 ?>
     <!-- Button trigger modal -->
-    
+
 <div class="modal fade" id="confirmar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -35,7 +35,7 @@ include_once 'layouts/nav.php';
       <div class="alert alert-success text-center" id="confirmado" style='display:none;'>
           <span><i class="fas fa-check m-1"></i>Se modifico al usuario</span>
       </div>
-      <div class="alert alert-danger text-center" id="rechazado" style='display:none;'>
+      <div class="alert alert-danger text-center" id="confirmado" style='display:none;'>
           <span><i class="fas fa-times m-1"></i>no se cambio el *****</span>
       </div>
       <form id="form-confirmar">
@@ -45,7 +45,7 @@ include_once 'layouts/nav.php';
              </div>
              <input id="oldpass"type="password" class="form-control" placeholder="Ingrese password actual">
              <input type="hidden" id="id_user">
-             <input type="hidden" id="funcion">      
+             <input type="hidden" id="funcion">
           </div>
       </div>
       <div class="modal-footer">
@@ -71,7 +71,7 @@ include_once 'layouts/nav.php';
           <div class="alert alert-success text-center" id="add" style='display:none;'>
           <span><i class="fas fa-check m-1"></i>Se agrego correctamente</span>
       </div>
-      <div class="alert alert-danger text-center" id="noadd" style='display:none;'>
+      <div class="alert alert-danger text-center" id="add" style='display:none;'>
           <span><i class="fas fa-times m-1"></i>DNI ya existe en otro usuario</span>
       </div>
             <form id="form-crear">
