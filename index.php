@@ -45,7 +45,7 @@ session_destroy();
                         <span class="icon-eye">
                           <i class="fas fa-eye-slash"></i>
                         </span>
-                        <input type="password" name="pass" class="input">                           
+                        <input type="password" name="pass" id="pass" class="input">  
                     </div>
                 </div>
                 <a href="../vista/recuperar.php">recuperar password</a>

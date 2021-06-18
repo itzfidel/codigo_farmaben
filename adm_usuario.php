@@ -10,7 +10,7 @@ include_once 'layouts/header.php';
 include_once 'layouts/nav.php';
 ?>
     <!-- Button trigger modal -->
-
+    
 <div class="modal fade" id="confirmar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -45,7 +45,7 @@ include_once 'layouts/nav.php';
              </div>
              <input id="oldpass"type="password" class="form-control" placeholder="Ingrese password actual">
              <input type="hidden" id="id_user">
-             <input type="hidden" id="funcion">
+             <input type="hidden" id="funcion">      
           </div>
       </div>
       <div class="modal-footer">
