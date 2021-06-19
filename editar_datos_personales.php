@@ -146,7 +146,7 @@ include_once 'layouts/nav.php';
                                   <span id="us_tipo"class="float-right">Administrador</span>
                               </li>
                               <button data-toggle="modal" data-target="#cambiocontra" type="button" class="btn btn-block btn-outline-warning btn-sm">Cambiar password</button>
-                            </ul>
+                            </ul>  
                          </div>
                       </div>
                       <div class="card card-sucess">
@@ -203,13 +203,13 @@ include_once 'layouts/nav.php';
                                   <div class="col-sm-10">
                                   <input type="number" id="telefono" class="form-control">
                                   </div>
-                                </div>
+                                </div>                                
                                 <div class="form-group row">
                                   <label for="movil" class="col-sm-2 col-form-label">Movil</label>
                                   <div class="col-sm-10">
                                   <input type="number" id="movil" class="form-control">
                                   </div>
-                                </div>
+                                </div>  
                                 <div class="form-group row">
                                   <label for="residencia" class="col-sm-2 col-form-label">Residencia</label>
                                   <div class="col-sm-10">
