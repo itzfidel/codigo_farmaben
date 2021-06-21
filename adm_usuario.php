@@ -35,8 +35,8 @@ include_once 'layouts/nav.php';
       <div class="alert alert-success text-center" id="confirmado" style='display:none;'>
           <span><i class="fas fa-check m-1"></i>Se modifico al usuario</span>
       </div>
-      <div class="alert alert-danger text-center" id="confirmado" style='display:none;'>
-          <span><i class="fas fa-times m-1"></i>no se cambio el *****</span>
+      <div class="alert alert-danger text-center" id="noconfirmado" style='display:none;'>
+          <span><i class="fas fa-times m-1"></i>no se cambio el usuario</span>
       </div>
       <form id="form-confirmar">
           <div class="input-group mb-3">
