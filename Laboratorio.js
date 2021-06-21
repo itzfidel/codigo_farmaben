@@ -47,10 +47,10 @@ $(document).ready(function(){
                 <tr labId="${laboratorio.id}" labNombre="${laboratorio.nombre}" labAvatar="${laboratorio.avatar}">
                    <td>
                          <button class="avatar btn btn-info" title="Cambiar logo de laboratorio" type="button" data-toggle="modal" data-target="#cambiologo">
-                              <i class="far fa-image"></i>                      
+                              <i class="far fa-file-image"></i>                      
                          </button>
-                         <button class="editar btn btn-success" title="Editar laboratorio" type="button" data-toggle="modal" data-target="#crearlaboratorio">
-                              <i class="fas fa-pencil-alt"></i>                      
+                         <button class="editar btn btn-warning" title="Editar laboratorio" type="button" data-toggle="modal" data-target="#crearlaboratorio">
+                              <i class="fas fa-edit"></i>                      
                          </button>
                          <button class="borrar btn btn-danger" title="Borrar laboratorio">
                               <i class="fas fa-trash-alt"></i>                      

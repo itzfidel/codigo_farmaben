@@ -51,7 +51,7 @@ if($_SESSION['us_tipo']==1||$_SESSION['us_tipo']==3){
   <div class="modal fade" id="crearlaboratorio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-        <div class="card card-success">
+        <div class="card card-secondary">
           <div class="card-header">
             <h3 class="card-title">Crear laboratorio</h3>
             <button data-dismiss="modal" aria-label="close"class="close">
@@ -87,7 +87,7 @@ if($_SESSION['us_tipo']==1||$_SESSION['us_tipo']==3){
 <div class="modal fade" id="creartipo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-        <div class="card card-success">
+        <div class="card card-secondary">
           <div class="card-header">
             <h3 class="card-title">Crear tipo</h3>
             <button data-dismiss="modal" aria-label="close"class="close">
@@ -123,7 +123,7 @@ if($_SESSION['us_tipo']==1||$_SESSION['us_tipo']==3){
 <div class="modal fade" id="crearpresentacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-        <div class="card card-success">
+        <div class="card card-secondary">
           <div class="card-header">
             <h3 class="card-title">Crear presentacion</h3>
             <button data-dismiss="modal" aria-label="close"class="close">
@@ -182,18 +182,18 @@ if($_SESSION['us_tipo']==1||$_SESSION['us_tipo']==3){
              <div class="col-md-12">
              <div class="card">
                  <div class="card-header">
-                      <ul class=" nav nav-pills">
+                      <ul class="nav nav-pills">
                         <li class="nav-item"><a href="#laboratorio" class="nav-link active" data-toggle="tab">Laboratorio</a></li>
                         <li class="nav-item"><a href="#tipo" class="nav-link"data-toggle="tab">Tipo</a></li>
                         <li class="nav-item"><a href="#presentacion" class="nav-link"data-toggle="tab">Presentacion</a></li>
-                      </ul>
+                      </ul>                 
                  </div>
                  <div class="card-body p-0">
                     <div class="tab-content" >
                       <div class="tab-pane active" id='laboratorio'>
-                        <div class="card card-success">
+                        <div class="card card-secondary">
                           <div class="card-header">
-                            <div class="card-title">Buscar laboratorio <button type="button" data-toggle="modal" data-target="#crearlaboratorio"class="btn bg-gradient-primary btn-sm m-2">Crear laboratorio</button></div>
+                            <div class="card-title">Buscar laboratorio <button type="button" data-toggle="modal" data-target="#crearlaboratorio"class="btn bg-gradient-info btn-sm m-2">Crear laboratorio</button></div>
                             <div class="input-group">
                               <input id="buscar-laboratorio"type="text" class="form-control float-left" placeholder="Ingrese nombre">
                               <div class="input-group-append">
@@ -203,7 +203,7 @@ if($_SESSION['us_tipo']==1||$_SESSION['us_tipo']==3){
                           </div>
                           <div class="card-body p-0 table-responsive">
                             <table class="table table-hover text-nowrap">
-                             <thead class="table-success">
+                             <thead class="table-secondary">
                               <tr>
                                 <th>Accion</th>
                                 <th>Logo</th>
@@ -220,9 +220,9 @@ if($_SESSION['us_tipo']==1||$_SESSION['us_tipo']==3){
                         </div>
                       </div>
                       <div class="tab-pane" id='tipo'>
-                        <div class="card card-success">
+                        <div class="card card-secondary">
                           <div class="card-header">
-                            <div class="card-title">Buscar tipo<button type="button" data-toggle="modal" data-target="#creartipo"class="btn bg-gradient-primary btn-sm m-2">Crear tipo</button></div>
+                            <div class="card-title">Buscar tipo<button type="button" data-toggle="modal" data-target="#creartipo"class="btn bg-gradient-info btn-sm m-2">Crear tipo</button></div>
                             <div class="input-group">
                               <input id="buscar-tipo"type="text" class="form-control float-left" placeholder="Ingrese nombre">
                               <div class="input-group-append">
@@ -232,7 +232,7 @@ if($_SESSION['us_tipo']==1||$_SESSION['us_tipo']==3){
                           </div>
                           <div class="card-body p-0 table-responsive">
                             <table class="table table-hover text-nowrap">
-                             <thead class="table-success">
+                             <thead class="table-secondary">
                               <tr>
                                 <th>Accion</th>                                
                                 <th>Tipo</th>
@@ -246,9 +246,9 @@ if($_SESSION['us_tipo']==1||$_SESSION['us_tipo']==3){
                         </div>
                       </div>
                       <div class="tab-pane" id='presentacion'>
-                        <div class="card card-success">
+                        <div class="card card-secondary">
                           <div class="card-header">
-                            <div class="card-title">Buscar presentacion <button type="button" data-toggle="modal" data-target="#crearpresentacion"class="btn bg-gradient-primary btn-sm m-2">Crear presentacion</button></div>
+                            <div class="card-title">Buscar presentacion <button type="button" data-toggle="modal" data-target="#crearpresentacion"class="btn bg-gradient-info btn-sm m-2">Crear presentacion</button></div>
                             <div class="input-group">
                               <input id="buscar-presentacion"type="text" class="form-control float-left" placeholder="Ingrese nombre">
                               <div class="input-group-append">
@@ -258,7 +258,7 @@ if($_SESSION['us_tipo']==1||$_SESSION['us_tipo']==3){
                           </div>
                           <div class="card-body p-0 table-responsive">
                             <table class="table table-hover text-nowrap">
-                             <thead class="table-success">
+                             <thead class="table-secondary">
                               <tr>
                                 <th>Accion</th>                                
                                 <th>Presentacion</th>

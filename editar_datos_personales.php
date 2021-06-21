@@ -42,15 +42,15 @@ include_once 'layouts/nav.php';
              <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-unlock-alt"></i></span>
              </div>
-             <input id="oldpass"type="password" class="form-control" placeholder="Ingrese password actual">
+             <input id="oldpass"type="text" class="form-control" placeholder="Ingrese password actual">
           </div>
           <div class="input-group mb-3">
              <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fas fa-lock"></i></span>
              </div>
-             <input id="newpass"type="text" class="form-control" placeholder="Ingrese password nueva">
+             <input id="newpass"type="password" class="form-control" placeholder="Ingrese password nueva">
           </div>
-
+          
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
@@ -186,7 +186,7 @@ include_once 'layouts/nav.php';
                       </div>
                     </div>
                     <div class="col-md-9">
-                     <div class="card card-success">
+                     <div class="card card-secondary">
                        <div class="card-header">
                            <h3 class="card-title">Editar datos personales</h3>
                        </div>

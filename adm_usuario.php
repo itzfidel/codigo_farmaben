@@ -127,7 +127,7 @@ include_once 'layouts/nav.php';
     </section>
     <section>
         <div class="container-fluid">
-            <div class="card card-success">
+            <div class="card card-secondary">
                 <div class="card-header">
                    <h3 class="card-title">Buscar usuarios</h3>
                    <div class="input-group">
