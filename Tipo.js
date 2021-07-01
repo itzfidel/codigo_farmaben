@@ -14,7 +14,7 @@ $(document).ready(function(){
             
             $.post('../controlador/TipoController.php',{nombre_tipo,id_editado,funcion},(response)=>{            
               if(response=='add'){                
-                $('#add-tipo').hide('slow');
+                  $('#add-tipo').hide('slow');
                   $('#add-tipo').show(1000);
                   $('#add-tipo').hide(2000);
                   $('#form-crear-tipo').trigger('reset');
@@ -30,7 +30,7 @@ $(document).ready(function(){
                   $('#edit-tip').hide('slow');
                   $('#edit-tip').show(1000);
                   $('#edit-tip').hide(2000);
-                  $('#form-crear-laboratorio').trigger('reset');
+                  $('#form-crear-tipo').trigger('reset');
                   buscar_tip();
               }
               edit==false;
@@ -46,8 +46,8 @@ $(document).ready(function(){
                template+=`
                   <tr tipId="${tipo.id}" tipNombre="${tipo.nombre}">
                      <td>                           
-                           <button class="editar-tip btn btn-success" title="Editar tipo" type="button" data-toggle="modal" data-target="#creartipo">
-                                <i class="fas fa-pencil-alt"></i>                      
+                           <button class="editar-tip btn btn-warning" title="Editar tipo" type="button" data-toggle="modal" data-target="#creartipo">
+                                <i class="fas fa-edit"></i>                      
                            </button>
                            <button class="borrar-tip btn btn-danger" title="Borrar tipo">
                                 <i class="fas fa-trash-alt"></i>                      
@@ -128,6 +128,6 @@ $(document).ready(function(){
       const nombre = $(elemento).attr('tipNombre');
       $('#id_editar_tip').val(id);
       $('#nombre-tipo').val(nombre);
-      edit==true;       
+      edit=true;       
     })   
   });

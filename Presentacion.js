@@ -12,9 +12,9 @@ $(document).ready(function(){
               funcion='editar';
             }
             
-            $.post('../controlador/PresentacionController.php',{nombre_presentacion,id_editado,funcion},(response)=>{        
-              if(response=='add'){                
-                $('#add-tipo').hide('slow');
+            $.post('../controlador/PresentacionController.php',{nombre_presentacion,id_editado,funcion},(response)=>{       
+              if(response=='add'){              
+                  $('#add-pre').hide('slow');
                   $('#add-pre').show(1000);
                   $('#add-pre').hide(2000);
                   $('#form-crear-presentacion').trigger('reset');
@@ -26,11 +26,10 @@ $(document).ready(function(){
                   $('#noadd-pre').hide(2000);
                   $('#form-crear-presentacion').trigger('reset');
               }
-
-              if(response=='edit'){
+              if(response=='edit'){                  
                   $('#edit-pre').hide('slow');
                   $('#edit-pre').show(1000);
-                  $('#edit-prep').hide(2000);
+                  $('#edit-pre').hide(2000);
                   $('#form-crear-presentacion').trigger('reset');
                   buscar_pre();
               }
@@ -47,8 +46,8 @@ $(document).ready(function(){
                template+=`
                   <tr preId="${presentacion.id}" preNombre="${presentacion.nombre}">
                      <td>                           
-                           <button class="editar-pre btn btn-success" title="Editar presentacion" type="button" data-toggle="modal" data-target="#crearpresentacion">
-                                <i class="fas fa-pencil-alt"></i>                      
+                           <button class="editar-pre btn btn-warning" title="Editar presentacion" type="button" data-toggle="modal" data-target="#crearpresentacion">
+                                <i class="fas fa-edit"></i>                      
                            </button>
                            <button class="borrar-pre btn btn-danger" title="Borrar presentacion">
                                 <i class="fas fa-trash-alt"></i>                      
@@ -129,6 +128,6 @@ $(document).ready(function(){
       const nombre = $(elemento).attr('preNombre');
       $('#id_editar_pre').val(id);
       $('#nombre-presentacion').val(nombre);
-      edit==true;       
+      edit=true;       
     })   
   });

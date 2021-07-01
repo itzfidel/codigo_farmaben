@@ -180,6 +180,6 @@ $(document).ready(function(){
     const nombre = $(elemento).attr('labNombre');
     $('#id_editar_lab').val(id);
     $('#nombre-laboratorio').val(nombre);
-    edit==true;       
+    edit=true;       
   })   
 });
