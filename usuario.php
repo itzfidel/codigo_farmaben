@@ -114,7 +114,7 @@ class Usuario{
             echo 'descendido';
         }
         else{
-            echo 'nodescendido';
+            echo 'nodescendido'
         }
     }
 }
