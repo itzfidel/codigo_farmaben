@@ -9,6 +9,45 @@ include_once 'layouts/header.php';
 <?php
 include_once 'layouts/nav.php';
 ?>   
+<div class="modal fade" id="cambiologo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cambiar logo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</spam>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+           <img id="logoactual"src="../img/avatar.png" class="profile-user-img img-fluid img-circle">
+        </div>
+        <div class="text-center">
+            <b id="nombre_logo">              
+            </b>
+        </div>
+        <div class="alert alert-success text-center" id="edit-prov" style='display:none;'>
+          <span><i class="fas fa-check m-1"></i>El logo se edito</span>
+        </div>
+        <div class="alert alert-danger text-center" id="noedit-prov" style='display:none;'>
+          <span><i class="fas fa-times m-1"></i>formato no soportado</span>
+        </div>
+        <form id="form-logo" enctype="multipart/form-data">
+          <div class="input-group mb-3 ml-5 mt-2">
+              <input type="file" name="photo"class="input-group">
+              <input type="hidden" name="funcion" id="funcion">
+              <input type="hidden" name="id_logo_prov" id="id_logo_prov">
+              <input type="hidden" name="avatar" id="avatar">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn bg-gradient-primary">Guardar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="modal fade" id="crearproveedor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -21,16 +60,23 @@ include_once 'layouts/nav.php';
             </button>
           </div>
           <div class="card-body">
-          <div class="alert alert-success text-center" id="add" style='display:none;'>
+          <div class="alert alert-success text-center" id="add-prov" style='display:none;'>
           <span><i class="fas fa-check m-1"></i>Se agrego correctamente</span>
       </div>
-      <div class="alert alert-danger text-center" id="noadd" style='display:none;'>
+      <div class="alert alert-danger text-center" id="noadd-prov" style='display:none;'>
           <span><i class="fas fa-times m-1"></i>El proveedor ya existe</span>
+      </div>
+      <div class="alert alert-success text-center" id="edit-prove" style='display:none;'>
+          <span><i class="fas fa-check m-1"></i>Se modifico correctamente</span>
       </div>
             <form id="form-crear">
               <div class="form-group">
                 <label for="nombre">Nombres</label>
                 <input id="nombre"type="text" class="form-control" placeholder="Ingrese nombre" required>
+              </div>
+              <div class="form-group">
+                <label for="encargado">Encargado</label>
+                <input id="encargado"type="text" class="form-control" placeholder="Ingrese encargado" required>
               </div>
               <div class="form-group">
                 <label for="telefono">Telefono</label>
