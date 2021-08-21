@@ -1,4 +1,4 @@
- <footer class="main-footer">
+<footer class="main-footer">
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.0.4
     </div>
@@ -16,5 +16,9 @@
 <script src="../js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../js/demo.js"></script>
+<!-- SweetAlert2 -->
+<script src="../js/sweetalert2.js"></script>
+<!-- select2 -->
+<script src="../js/select2.js"></script>
 </body>
 </html>
