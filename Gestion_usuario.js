@@ -107,12 +107,13 @@ $(document).ready(function(){
     let pass = $('#pass').val();
     funcion='crear_usuario';
     $.post('../controlador/UsuarioController.php',{nombre,apellido,edad,dni,pass,funcion},(response)=>{
-        if(response=='add'){
+      response = response.trim(); 
+      if(response=='add'){
           $('#add').hide('slow');
           $('#add').show(1000);
           $('#add').hide(2000);
           $('#form-crear').trigger('reset');
-          buscar_datos();
+          buscar_datos();        
       }
       else{
           $('#noadd').hide('slow');
@@ -149,12 +150,14 @@ $(document).ready(function(){
     let id_usuario=$('#id_user').val();
     funcion=$('#funcion').val();
     $.post('../controlador/UsuarioController.php',{pass,id_usuario,funcion},(response)=>{
-        if(response=='ascendido'|| response=='descendido'|| response=='borrado'){
+      response = response.trim();
+      console.log(response);  
+      if(response=='ascendido'|| response=='descendido'|| response=='borrado'){
         $('#confirmado').hide('slow');
         $('#confirmado').show(1000);
         $('#confirmado').hide(2000);
         $('#form-confirmado').trigger('reset');
-      }
+      }  
         else{
         $('#rechazado').hide('slow');
         $('#rechazado').show(1000);
@@ -165,5 +168,5 @@ $(document).ready(function(){
     });
     e.preventDefault();
 
-  });
+  });  
 })

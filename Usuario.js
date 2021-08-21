@@ -31,7 +31,7 @@ $(document).ready(function(){
               if(usuario.tipo=='Tecnico'){
                 tipo+=`<h1 class="badge badge-info">${usuario.tipo}</h1>`;
               }
-            tipo+=`${usuario.tipo}`;
+            
             telefono+=`${usuario.telefono}`;
             movil+=`${usuario.movil}`;
             residencia+=`${usuario.residencia}`;
@@ -132,7 +132,7 @@ $(document).ready(function(){
             processData: false,
             contentType:false
         }).done(function(response){
-            const json = JSON.parse(response);
+            const json = JSON.parse(response);            
             if(json.alert=='edit'){
             $('#avatar1').attr('src',json.ruta);
             $('#edit').hide('slow');
