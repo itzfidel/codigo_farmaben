@@ -1,7 +1,7 @@
 <?php
 include 'Conexion.php';
 class Tipo{
-     var $objeto;
+     var $objetos;
      public function __construct(){
          $db= new Conexion();
          $this->acceso=$db->pdo;
