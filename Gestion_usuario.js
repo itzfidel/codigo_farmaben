@@ -151,7 +151,6 @@ $(document).ready(function(){
     funcion=$('#funcion').val();
     $.post('../controlador/UsuarioController.php',{pass,id_usuario,funcion},(response)=>{
       response = response.trim();
-      console.log(response);  
       if(response=='ascendido'|| response=='descendido'|| response=='borrado'){
         $('#confirmado').hide('slow');
         $('#confirmado').show(1000);

@@ -4,7 +4,8 @@ $(document).ready(function(){
     buscar_producto();
     function buscar_producto(consulta) {
         funcion="buscar";     
-        $.post('../controlador/ProductoController.php',{consulta,funcion},(response)=>{            
+        $.post('../controlador/ProductoController.php',{consulta,funcion},(response)=>{   
+          //console.log(response);         
           const productos = JSON.parse(response);
           let template='';
           productos.forEach(producto => {
@@ -60,42 +61,67 @@ $(document).ready(function(){
         }
     });
     function mostrar_lotes_riesgo() {
-        funcion="buscar";
+        funcion = "buscar_lotes_riesgo";
         $.post('../controlador/LoteController.php',{funcion},(response)=>{
-            const lotes= JSON.parse(response);
-            let template='';
-            lotes.forEach(lote => {
-                if(lote.estado=='warning'){
-                    template+=`
-                <tr class="table-warning">
-                    <td>${lote.id}</td>
-                    <td>${lote.nombre}</td>
-                    <td>${lote.stock}</td>
-                    <td>${lote.laboratorio}</td>
-                    <td>${lote.presentacion}</td>
-                    <td>${lote.proveedor}</td>
-                    <td>${lote.mes}</td>
-                    <td>${lote.dia}</td>
-                </tr>
-                `;
-                }
-                if(lote.estado=='danger'){
-                    template+=`
-                <tr class="table-danger">
-                    <td>${lote.id}</td>
-                    <td>${lote.nombre}</td>
-                    <td>${lote.stock}</td>
-                    <td>${lote.laboratorio}</td>
-                    <td>${lote.presentacion}</td>
-                    <td>${lote.proveedor}</td>
-                    <td>${lote.mes}</td>
-                    <td>${lote.dia}</td>
-                </tr>
-                `;
-                }
-                
-            });
-            $('#lotes').html(template);
+          console.log(response);
+            const lotes = JSON.parse(response);
+            datatable = $('#lotes').DataTable({
+              data: lotes,
+              "columns": [
+                  { "data": "id" },
+                  { "data": "nombre" },
+                  { "data": "stock" },
+                  { "data": "estado" },
+                  { "data": "laboratorio" },
+                  { "data": "proveedor" },
+                  { "data": "mes" },
+                  { "data": "dia" },
+                  { "data": "hora" },
+              ],
+              columnDefs:[{
+                      "render": function(data, type, row){
+                        let campo = '';
+                        if (row.estado == 'danger'){
+                          campo = `<h1 class="badge badge-danger">${row.estado}</h1>`;
+                        }
+                        if (row.estado == 'warning'){
+                          campo = `<h1 class="badge badge-warning">${row.estado}</h1>`;
+                        }
+                        return campo;
+                      },
+                  "targets": [3]
+                }],
+              "destroy": true,
+              "language": espanol
+          });
         })
-}
+    }
 })
+let espanol = {
+  "sProcessing": "Procesando...",
+  "sLengthMenu": "Mostrar _MENU_ registros",
+  "sZeroRecords": "No se encontraron resultados",
+  "sEmptyTable": "Ningún dato disponible en esta tabla",
+  "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+  "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+  "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+  "sInfoPostFix": "",
+  "sSearch": "Buscar:",
+  "sUrl": "",
+  "sInfoThousands": ",",
+  "SLoadingRecords": "Cargando...",
+  "oPaginate": {
+      "sFirst": "Primero",
+      "sLast": "Último",
+      "sNext": "Siguiente",
+      "sPrevious": "Anterior"
+  },
+  "oAria": {
+      "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+      "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+  },
+  "buttons": {
+      "copy": "Copiar",
+      "colvis": "Visibilidad"
+  }
+}; 

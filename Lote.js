@@ -5,12 +5,13 @@ $(document).ready(function(){
    
     function buscar_lote(consulta) {
         funcion="buscar";     
-        $.post('../controlador/LoteController.php',{consulta,funcion},(response)=>{                   
+        $.post('../controlador/LoteController.php',{consulta,funcion},(response)=>{    
+          console.log(response);             
           const lotes = JSON.parse(response);
           let template='';
           lotes.forEach(lote => {
               template+=`
-              <div loteId="${lote.id}" loteStock="${lote.stock}" class="col-12 col-sm-6 col-md-3 d-flex align-items-stretch">`;
+              <div loteId="${lote.id}" loteStock="${lote.stock}" loteCodigo="${lote.codigo} class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">`;
               if(lote.estado=='light'){
                 template+=`<div class="card bg-light">`;
               }
@@ -22,8 +23,8 @@ $(document).ready(function(){
               }
 
                 template+= `<div class="card-header border-bottom-0">
-                <h6>Codigo ${lote.id}</h6>
-                  <i class="fa fa-lg fa-cubes"></i>${lote.stock} 
+                <h6>Codigo ${lote.codigo}</h6>
+                  <i class="fa fa-lg fa-cubes mr-1"></i>${lote.stock} 
                 </div>
                 <div class="card-body pt-0">
                   <div class="row">
@@ -39,8 +40,10 @@ $(document).ready(function(){
                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-pills"></i></span> Presentacion: ${lote.presentacion}</li>
                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-calendar-times"></i></span> Vencimiento: ${lote.vencimiento}</li>
                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-truck"></i></span> Proveedor: ${lote.proveedor}</li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-calendar-alt"></i></span> anio: ${lote.anio}</li>
                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-calendar-alt"></i></span> mes: ${lote.mes}</li>
                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-calendar-day"></i></span> dia: ${lote.dia}</li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-calendar-day"></i></span> dia: ${lote.hora}</li>
 
                       </ul>
                     </div>
@@ -56,7 +59,6 @@ $(document).ready(function(){
                       <i class="fas fa-edit"></i>
                     </button>
                    
-                  </button>
                   <button  class="borrar btn btn-sm btn-danger">
                   <i class="fas fa-trash-alt"></i>
                 </button>
@@ -79,24 +81,25 @@ $(document).ready(function(){
         }
     });
     $(document).on('click','.editar',(e)=>{       
-      const elemento = $(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
-      const id = $(elemento).attr('loteId');
-      const stock=$(elemento).attr('loteStock');
+      let elemento = $(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
+      let id = $(elemento).attr('loteId');
+      let stock = $(elemento).attr('loteStock');
+      let codigo = $(elemento).attr('loteCodigo');
       
       $('#id_lote_prod').val(id);  
       $('#stock').val(stock);
-      $('#codigo_lote').html(id);     
+      $('#codigo_lote').html(codigo);     
     
   });
   $('#form-editar-lote').submit(e=>{
     let id = $('#id_lote_prod').val();
     let stock = $('stock').val();
     funcion="editar";
-    $.post('../controlador/LaboratorioController.php',{id,stock,funcion},(response)=>{
+    $.post('../controlador/LoteController.php',{id,stock,funcion},(response)=>{
       if(response=='edit'){
         $('#edit-lote').hide('slow');
           $('#edit-lote').show(1000);
-          $('#edit-love').hide(2000);
+          $('#edit-lote').hide(2000);
           $('#form-editar-lote').trigger('reset');
       }
       buscar_lote();
@@ -128,6 +131,7 @@ $(document).ready(function(){
       }).then((result) => {
         if (result.value) {
             $.post('../controlador/LoteController.php',{id,funcion},(response)=>{
+              console.log(response);
                if(response=='borrado'){
                    swalWithBootstrapButtons.fire(
                     'Borrado!',

@@ -190,7 +190,7 @@ $(document).ready(function(){
         }).then((result) => {
           if (result.value) {
               $.post('../controlador/ProveedorController.php',{id,funcion},(response)=>{
-                 
+                 console.log(response);
                  if(response=='borrado'){
                      swalWithBootstrapButtons.fire(
                       'Borrado!',

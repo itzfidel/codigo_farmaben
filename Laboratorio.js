@@ -13,6 +13,7 @@ $(document).ready(function(){
           }
           
           $.post('../controlador/LaboratorioController.php',{nombre_laboratorio,id_editado,funcion},(response)=>{            
+              console.log(response);
             if(response=='add'){
                 $('#add-laboratorio').hide('slow');
                 $('#add-laboratorio').show(1000);
@@ -33,7 +34,7 @@ $(document).ready(function(){
                 $('#form-crear-laboratorio').trigger('reset');
                 buscar_lab();
             }
-            edit==false;
+            edit=false;
           })
           e.preventDefault();                 
   });

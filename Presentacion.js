@@ -33,7 +33,7 @@ $(document).ready(function(){
                   $('#form-crear-presentacion').trigger('reset');
                   buscar_pre();
               }
-              edit==false;
+              edit=false;
             })
             e.preventDefault();                 
     });

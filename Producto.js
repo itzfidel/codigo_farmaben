@@ -74,28 +74,34 @@ $(document).ready(function(){
         else{
           funcion="crear";
         }
-        $.post('../controlador/ProductoController.php',{funcion,id,nombre,concentracion,adicional,precio,laboratorio,tipo,presentacion},(response)=>{ 
-          if(response=='add'){
+        $.post('../controlador/ProductoController.php', { funcion,id,nombre,concentracion,adicional,precio,laboratorio,tipo,presentacion },(response) => { 
+          if (response == 'add') {
               $('#add').hide('slow');
               $('#add').show(1000);
               $('#add').hide(2000);
               $('#form-crear-producto').trigger('reset');
+              $('#laboratorio').val('').trigger('change'); 
+              $('#tipo').val('').trigger('change'); 
+              $('#presentacion').val('').trigger('change');
               buscar_producto();
           }
-          if(response=='edit'){
+          if (response == 'edit') {
               $('#edit_prod').hide('slow');
               $('#edit_prod').show(1000);
               $('#edit_prod').hide(2000);
               $('#form-crear-producto').trigger('reset');
+              $('#laboratorio').val('').trigger('change'); 
+              $('#tipo').val('').trigger('change'); 
+              $('#presentacion').val('').trigger('change');
               buscar_producto();             
           }
-          if(response=='noadd'){
+          if (response == 'noadd') {
               $('#noadd').hide('slow');
               $('#noadd').show(1000);
               $('#noadd').hide(2000);
               $('#form-crear-producto').trigger('reset');
           }
-          if(response=='noedit'){
+          if (response == 'noedit') {
             $('#noadd').hide('slow');
             $('#noadd').show(1000);
             $('#noadd').hide(2000);
@@ -107,7 +113,8 @@ $(document).ready(function(){
     });
     function buscar_producto(consulta) {
         funcion="buscar";     
-        $.post('../controlador/ProductoController.php',{consulta,funcion},(response)=>{            
+        $.post('../controlador/ProductoController.php',{consulta,funcion},(response)=>{ 
+          //console.log(response);           
           const productos = JSON.parse(response);
           let template='';
           productos.forEach(producto => {
@@ -144,9 +151,7 @@ $(document).ready(function(){
                     <button  class="editar btn btn-sm btn-secondary"type="button" data-toggle="modal" data-target="#crearproducto">
                       <i class="fas fa-edit"></i>
                     </button>
-                    <button  class="lote btn btn-sm btn-primary"type="button" data-toggle="modal" data-target="#crearlote">
-                    <i class="fas fa-box-open"></i>
-                  </button>
+                  
                   <button  class="borrar btn btn-sm btn-danger">
                   <i class="fas fa-trash-alt"></i>
                 </button>
@@ -180,13 +185,6 @@ $(document).ready(function(){
         $('#logoactual').attr('src',avatar);
         $('#nombre_logo').html(nombre);      
     });
-    $(document).on('click','.lote',(e)=>{   
-      const elemento = $(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
-      const id = $(elemento).attr('prodId');
-      const nombre=$(elemento).attr('prodNombre');
-      $('#id_lote_prod').val(id);
-      $('#nombre_producto_lote').html(nombre);      
-  });
     $('#form-logo').submit(e=>{
       let formData = new FormData($('#form-logo')[0]);
       $.ajax({
@@ -226,6 +224,7 @@ $(document).ready(function(){
       const tipo=$(elemento).attr('prodTipo');
       const presentacion=$(elemento).attr('prodPresentacion');      
 
+
       $('#id_edit_prod').val(id);  
       $('#nombre_producto').val(nombre);
       $('#concentracion').val(concentracion);     
@@ -264,8 +263,9 @@ $(document).ready(function(){
       }).then((result) => {
         if (result.value) {
             $.post('../controlador/ProductoController.php',{id,funcion},(response)=>{
-                edit==false;
-               if(response=='borrado'){
+              console.log(response);
+              edit==false;
+               if (response == 'borrado'){
                    swalWithBootstrapButtons.fire(
                     'Borrado!',
                     'El producto '+nombre+' fue borrado.',
@@ -276,7 +276,7 @@ $(document).ready(function(){
                else{
                 swalWithBootstrapButtons.fire(
                     'No se pudo borrar!',
-                    'El producto '+nombre+' no fue borrado por que esta siendo usado en un lote.',
+                    'El producto '+nombre+' no fue borrado por que tiene stock disponible.',
                     'error'
                   )                  
                }
@@ -291,20 +291,83 @@ $(document).ready(function(){
         }
       })   
   })
-  $('#form-crear-lote').submit(e=>{
-    let id_producto=$('#id_lote_prod').val();
-    let proveedor=$('#proveedor').val();
-    let stock=$('#stock').val();
-    let vencimiento=$('#vencimiento').val();
-    funcion='crear'
-    $.post('../controlador/LoteController.php',{funcion,vencimiento,stock,proveedor,id_producto},(response)=>{
-      $('#add-lote').hide('slow');
-      $('#add-lote').show(1000);
-      $('#add-lote').hide(2000);
-      $('#form-crear-lote').trigger('reset');
-      buscar_producto();
-    });
-
-    e.preventDefault();
+  
+  $(document).on('click','#button-reporte', (e) => {
+    Mostrar_Loader("generarReportePDF");
+    funcion ='reporte_productos';
+    $.post('../controlador/ProductoController.php', { funcion }, (response) => {
+      console.log(response);
+      if(response==""){
+        Cerrar_Loader("exito_reporte");
+        window.open('../pdf/pdf-' + funcion + '.pdf','_blank');
+      } else{
+        Cerrar_Loader("error_reporte");
+      }
+      
+    })
   });
+  $(document).on('click', '#button-reporteExcel', (e) => {
+    //Mostrar_Loader("generarReportePDF");
+    funcion = 'reporte_productosExcel';
+    $.post('../controlador/ProductoController.php', { funcion }, (response) => {
+      response = response.trim()
+      console.log(response);
+      if (response == "") {
+        //Cerrar_Loader("exito_reporte");
+        window.open('../Excel/reporte_productos.xlsx', '_blank');
+      } else{
+        //Cerrar_Loader("error_reporte");
+      }
+      
+    })
+  });
+
+  function Mostrar_Loader(Mensaje){
+    var texto = null;
+    var mostrar = false;
+    switch (Mensaje) {
+        case 'generarReportePDF':
+        texto = 'Se esta generando el reporte en formato PDF, por favor espere...';
+        mostrar = true;
+        break;
+    }
+    if(mostrar){
+        Swal.fire({
+            
+            title: 'Generando reporte',
+            text: texto,
+            showConfirmButton: false
+          })
+    }
+}
+function Cerrar_Loader(Mensaje){
+    var tipo = null;
+    var texto = null;
+     var mostrar = false;
+    switch (Mensaje) {
+        case 'exito_reporte':
+            tipo='success';
+            texto = 'El reporte fue generado correctamente.';
+            mostrar = true;
+            break;
+            case 'error_reporte':
+            tipo='error';
+            texto = 'El reporte no pudo generarse, comuniquese con el personal de sistemas.';
+            mostrar = true;
+            break;
+
+        default:
+            swal.close();
+            break;
+        }
+        if(mostrar){
+            Swal.fire({
+                position: 'center',
+                icon: tipo,
+                text: texto,
+                showConfirmButton: false
+              })
+        }
+}
+
 })
